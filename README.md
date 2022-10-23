@@ -1,12 +1,14 @@
-# Asistencia_CopyPaste
+# Asistencia_CopyPaste :white_check_mark:
 
-*******INTEGRANTES*********
+# *******INTEGRANTES*********
+
+:one: FRANCO MESAS         
+:two: GIMENEZ ERNESTO MATIAS
+:three: JESICA VIOLA 
+:four: LEILA BRITEZ NEIRA          
+:five: LEONARDO SOLAN                      
+:six: SAMUEL LUCAS LIMACHI    
+:seven: SEBASTIAN VERGUECIO 
 
 
-GIMENEZ ERNESTO MATIAS      
-SEBASTIAN VERGUECIO         
-FRANCO MESAS                
-SAMUEL LUCAS LIMACHI       
-LEILA BRITEZ NEIRA          
-JESICA VIOLA                
-LEONARDO SOLAN        
+:notebook_with_decorative_cover: Repositorio del grupo de estudiantes de la Tecnicatura Universitaria en Programación de la Universidad Tecnológica Nacional - Facultad Regional San Rafael. :argentina:
