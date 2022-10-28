@@ -8,7 +8,9 @@ import java.util.Scanner;
 
 /**
  *
- * @author Grupo Copy Paste: Integrantes FRANCO MESAS, GIMENEZ ERNESTO MATIAS, JESICA VIOLA, LEILA BRITEZ NEIRA, LEONARDO SOLAN, SAMUEL LUCAS LIMACHI y SEBASTIAN VERGUECIO
+ * @author Grupo Copy Paste: Integrantes FRANCO MESAS, GIMENEZ ERNESTO MATIAS, 
+ * JESICA VIOLA, LEILA BRITEZ NEIRA, LEONARDO SOLAN, 
+ * SAMUEL LUCAS LIMACHI y SEBASTIAN VERGUECIO
  */
 public class CocherasJava {
 
@@ -20,21 +22,14 @@ public class CocherasJava {
     // TODO code application logic here
         Scanner scanner = new Scanner(System.in);
         
-        System.out.println("Ingresa el Dinero que tiene Guillermo:");
-        int DineroGuillermo = Integer.parseInt(scanner.nextLine());
-        
-        var DineroLuis = DineroGuillermo / 2;
-        var DineroJuan = (DineroGuillermo + DineroLuis) / 2;
-        
-        var TotalDinero = DineroGuillermo + DineroLuis + DineroJuan;
+        System.out.println("Ingresa el Número de cocheras Disponibles:");
+        int CocherasDisponibles = Integer.parseInt(scanner.nextLine());
         
         
+              
         
-        System.out.println("DineroGuillermo = " + DineroGuillermo);
-        System.out.println("DineroLuis = " + DineroLuis);        
-        System.out.println("DineroJuan = " + DineroJuan);
-        System.out.println("-------------------------------------------");
-        System.out.println("El Total del Dinero que poseen los tres es= " + TotalDinero);
+        System.out.println("El total de cocheras Disponible es = " + CocherasDisponibles);
+        
     }
     
 }
