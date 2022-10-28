@@ -148,6 +148,9 @@ public class CocherasJava {
     // metodo para mostrar la cantidad de cocheras disponibles
 
     public static void mostrarCocherasDisponibles(int cocheras) {
+        // limpiar pantalla
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
         int cocherasDisponibles = cocheras + 10;
 
