@@ -10,3 +10,4 @@ print("El cuadrado de", numero, "es", cuadrado)
 print("El cubo de", numero, "es", cubo)
 
 # Path: AsistenciaVerguecioSebastian.py
+# Otro comentario
