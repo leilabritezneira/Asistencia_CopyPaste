@@ -23,6 +23,7 @@ public class CocherasJava {
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
+        String[][] cocherasOcupadas = new String[2][4];
         Scanner scanner = new Scanner(System.in);
 
         // mostrar menu de opciones
@@ -41,7 +42,8 @@ public class CocherasJava {
 
         switch (opcion) {
             case 1:
-                menuEspañol(cantidadCocheras());
+                int cocheras = cantidadCocheras();
+                menuEspañol(cocheras);
                 break;
             case 2:
                 menuEnglish();
@@ -119,8 +121,43 @@ public class CocherasJava {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
+        // Para leer datos de entrada
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("estoy en el ingreso de vehiculo");
+        // Declara una array bidiemnsional de 5x5
+        String[][] cocheras = new String[2][4];
+
+        for (int i = 0; i < cocheras.length; i++) {
+
+            System.out.println("Ingresado tipo de Auto");
+            cocheras[i][0] = scanner.nextLine();
+
+            System.out.println("Ingresado patente");
+            cocheras[i][1] = scanner.nextLine();
+
+            System.out.println("Ingresado fecha de ingreso");
+            cocheras[i][2] = scanner.nextLine();
+
+            System.out.println("Ingresado Hora  de ingreso");
+            cocheras[i][3] = scanner.nextLine();
+
+        }
+
+        // imprimir la matriz de cocheras
+        System.out.println("LOS DATOS INGRESADOS SON: ");
+        for (int i = 0; i < cocheras.length; i++) {
+            for (int j = 0; j < cocheras[i].length; j++) {
+                System.out.print(cocheras[i][j] + " - ");
+            }
+            System.out.println("");
+        }
+
+        // pausar la ejecucion del programa
+
+        System.out.println("Presione enter para continuar");
+        scanner.nextLine();
+
+
     }
 
     // Metodo para verificare las cocheras disponibles
