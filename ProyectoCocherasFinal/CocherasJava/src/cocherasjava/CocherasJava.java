@@ -19,58 +19,81 @@ public class CocherasJava {
      */
     public static void main(String[] args) {
 
+        String[][] ArrayCocheras = new String[1000][4];
+
+        menuPrincipal(ArrayCocheras);
+
+    }
+
+    // metodo menu principal
+
+    public static void menuPrincipal(String[][] ArrayCocheras) {
+
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
-
-        String[][] cocherasOcupadas = new String[2][4];
-        Scanner scanner = new Scanner(System.in);
 
         // mostrar menu de opciones
         System.out.println("Bienvenido al sistema de gestión de cocheras");
         System.out.println("1. Español");
         System.out.println("2. English");
-        System.out.println("3. Salir");
+        System.out.println("3. Salir / Exit");
         System.out.println("------------------------------------------");
 
         System.out.println("Ingrese una opción / Choose a menu option: ");
 
         // leer la opcion ingresada por el usuario
-        int opcion = scanner.nextInt();
 
-        // dependiendo de la opcion elegida, ejecutar el codigo correspondiente
+        try (Scanner scanner = new Scanner(System.in)) {
+            int opcion = 0;
+            opcion = scanner.nextInt();
+            switch (opcion) {
+                case 1:
+                    int cocheras = cantidadCocheras();
+                    menuEspañol(cocheras, ArrayCocheras);
+                    break;
+                case 2:
+                    menuEnglish();
+                    break;
+                case 3:
+                    System.out.println("Gracias por utilizar el sistema");
+                    break;
 
-        switch (opcion) {
-            case 1:
-                int cocheras = cantidadCocheras();
-                menuEspañol(cocheras);
-                break;
-            case 2:
-                menuEnglish();
-                break;
-            case 3:
-                System.out.println("Gracias por utilizar el sistema");
-                break;
+                default:
+                    // limpiar pantalla
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
 
-            default:
-                System.out.println("Opción inválida");
-                // volver a mostrar el menu
-                main(args);
+                    System.out.println("------------------------------------------");
+                    System.out.println(opcion + " No es una opción válida");
+                    System.out.println("------------------------------------------");
+
+                    // esperar 2 segundos
+                    try {
+                        Thread.sleep(2000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    // volver a mostrar el menu
+                    menuPrincipal(ArrayCocheras);
+
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR: No es un caracter válido / Fin del programa");
 
         }
 
     }
 
     // Metodo para mostrar el menu en español
-    public static void menuEspañol(int cocheras) {
+    public static void menuEspañol(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("Bienvenido al sistema de gestión de cocheras");
-        int cantidadCocheras = cocheras;
+        // int cantidadCocheras = cocheras;
 
         // menu de opciones
         System.out.println("1. Ingresar vehículo");
@@ -80,25 +103,27 @@ public class CocherasJava {
 
         System.out.println("Ingrese una opción: ");
 
-        // leer la opcion ingresada por el usuario
-        int opcion = scanner.nextInt();
+        try (Scanner scanner = new Scanner(System.in)) {
+            // leer la opcion ingresada por el usuario
+            int opcion = scanner.nextInt();
 
-        // dependiendo de la opcion elegida, ejecutar el codigo correspondiente
-        switch (opcion) {
-            case 1 -> ingresoVehiculo();
-            case 2 -> menuEnglish();
-            case 3 -> mostrarCocherasDisponibles(cocheras);
-            case 4 -> {
-                System.out.println("Gracias por utilizar el sistema");
-                break;
+            // dependiendo de la opcion elegida, ejecutar el codigo correspondiente
+            switch (opcion) {
+                case 1 -> ingresoVehiculo(cocheras, ArrayCocheras);
+                case 2 -> menuEnglish();
+                case 3 -> mostrarCocherasDisponibles(cocheras, ArrayCocheras);
+                case 4 -> {
+                    System.out.println("Gracias por utilizar el sistema");
+                    break;
+                }
+
+                default -> {
+                    System.out.println("Opción inválida");
+                    // volver a mostrar el menu
+                    menuEspañol(cocheras, ArrayCocheras);
+                }
+
             }
-
-            default -> {
-                System.out.println("Opción inválida");
-                // volver a mostrar el menu
-                menuEspañol(cantidadCocheras);
-            }
-
         }
 
     }
@@ -117,37 +142,40 @@ public class CocherasJava {
 
     // Metodo para ingresar vehiculos
 
-    public static void ingresoVehiculo() {
+    public static void ingresoVehiculo(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
+
+        // Iniciar variable booleana para controlar el ingreso de vehiculos
+        boolean cocheraLibre = false;
+
         // Para leer datos de entrada
         Scanner scanner = new Scanner(System.in);
 
         // Declara una array bidiemnsional de 5x5
-        String[][] cocheras = new String[2][4];
 
-        for (int i = 0; i < cocheras.length; i++) {
+        for (int i = 0; i < cocheras; i++) {
 
             System.out.println("Ingresado tipo de Auto");
-            cocheras[i][0] = scanner.nextLine();
+            ArrayCocheras[i][0] = scanner.nextLine();
 
             System.out.println("Ingresado patente");
-            cocheras[i][1] = scanner.nextLine();
+            ArrayCocheras[i][1] = scanner.nextLine();
 
             System.out.println("Ingresado fecha de ingreso");
-            cocheras[i][2] = scanner.nextLine();
+            ArrayCocheras[i][2] = scanner.nextLine();
 
             System.out.println("Ingresado Hora  de ingreso");
-            cocheras[i][3] = scanner.nextLine();
+            ArrayCocheras[i][3] = scanner.nextLine();
 
         }
 
         // imprimir la matriz de cocheras
         System.out.println("LOS DATOS INGRESADOS SON: ");
-        for (int i = 0; i < cocheras.length; i++) {
-            for (int j = 0; j < cocheras[i].length; j++) {
-                System.out.print(cocheras[i][j] + " - ");
+        for (int i = 0; i < cocheras; i++) {
+            for (int j = 0; j < ArrayCocheras[i].length; j++) {
+                System.out.print(ArrayCocheras[i][j] + " - ");
             }
             System.out.println("");
         }
@@ -157,18 +185,17 @@ public class CocherasJava {
         System.out.println("Presione enter para continuar");
         scanner.nextLine();
 
+        menuEspañol(cocheras, ArrayCocheras);
 
     }
 
     // Metodo para verificare las cocheras disponibles
-
     public static int cocherasDisponibles(int cocheras) {
 
         return cocheras + 10;
     }
 
     // metodo Solicita cantidad de cocheras disponibles
-
     public static int cantidadCocheras() {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
@@ -183,22 +210,27 @@ public class CocherasJava {
     }
 
     // metodo para mostrar la cantidad de cocheras disponibles
-
-    public static void mostrarCocherasDisponibles(int cocheras) {
+    public static void mostrarCocherasDisponibles(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
 
-        int cocherasDisponibles = cocheras + 10;
+        // imprimir la matriz de cocheras
+        System.out.println("LOS DATOS INGRESADOS SON: ");
+        for (int i = 0; i < cocheras; i++) {
+            for (int j = 0; j < ArrayCocheras[i].length; j++) {
+                System.out.print(ArrayCocheras[i][j] + " - ");
+            }
+            System.out.println("");
+        }
 
-        System.out.println("La cantidad de cocheras disponibles es: " + cocherasDisponibles);
+        // pausar la ejecucion del programa
 
-        // para continuar presione enter
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Presione enter para continuar");
+        Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
 
-        menuEspañol(cocherasDisponibles);
+        menuEspañol(cocheras, ArrayCocheras);
     }
 
 }
