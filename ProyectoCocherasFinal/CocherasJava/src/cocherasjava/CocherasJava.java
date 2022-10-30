@@ -150,25 +150,47 @@ public class CocherasJava {
         // Iniciar variable booleana para controlar el ingreso de vehiculos
         boolean cocheraLibre = false;
 
-        // Para leer datos de entrada
-        Scanner scanner = new Scanner(System.in);
-
-        // Declara una array bidiemnsional de 5x5
-
+        // recorrer ArrayCocheras[0], verificar si es null
         for (int i = 0; i < cocheras; i++) {
+            if (ArrayCocheras[i][0] == null) {
+                // si es null, mostrar mensaje de cochera libre
+                System.out.println("Cochera libre: " + i);
+                cocheraLibre = true;
+                int cocheraCarga = i;
+            }
+        }
 
-            System.out.println("Ingresado tipo de Auto");
-            ArrayCocheras[i][0] = scanner.nextLine();
+        // si cocherasLibre es true, mostrar mensaje de cochera libre
 
-            System.out.println("Ingresado patente");
-            ArrayCocheras[i][1] = scanner.nextLine();
+        if (cocheraLibre == true) {
+            System.out.println("Ingrese el número de cochera a ocupar: ");
+            try (Scanner scanner = new Scanner(System.in)) {
+                int cocheraCarga = scanner.nextInt();
+                System.out.println("Ingrese el tipo de vehículo: ");
+                String tipoVehiculo = scanner.next();
+                System.out.println("Ingrese la patente: ");
+                String patente = scanner.next();
+                System.out.println("Ingrese la marca: ");
+                String fecha = scanner.next();
+                System.out.println("Ingrese el modelo: ");
+                String hora = scanner.next();
 
-            System.out.println("Ingresado fecha de ingreso");
-            ArrayCocheras[i][2] = scanner.nextLine();
+                // cargar datos en el array
+                ArrayCocheras[cocheraCarga][0] = tipoVehiculo;
+                ArrayCocheras[cocheraCarga][1] = patente;
+                ArrayCocheras[cocheraCarga][2] = fecha;
+                ArrayCocheras[cocheraCarga][3] = hora;
 
-            System.out.println("Ingresado Hora  de ingreso");
-            ArrayCocheras[i][3] = scanner.nextLine();
-
+                // mostrar mensaje de vehiculo cargado
+                System.out.println("Vehículo cargado correctamente");
+                // pausar la ejecucion del programa
+                System.out.println("Presione enter para continuar");
+                scanner.nextLine();
+            }
+        } else {
+            System.out.println("No hay cocheras disponibles");
+            // pausar la ejecucion del programa
+            System.out.println("Presione enter para continuar");
         }
 
         // imprimir la matriz de cocheras
@@ -179,11 +201,6 @@ public class CocherasJava {
             }
             System.out.println("");
         }
-
-        // pausar la ejecucion del programa
-
-        System.out.println("Presione enter para continuar");
-        scanner.nextLine();
 
         menuEspañol(cocheras, ArrayCocheras);
 
