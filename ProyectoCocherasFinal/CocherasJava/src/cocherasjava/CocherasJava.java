@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author Grupo Copy Paste: Integrantes FRANCO MESAS, GIMENEZ ERNESTO MATIAS,
  *         JESICA VIOLA, LEILA BRITEZ NEIRA, LEONARDO SOLAN,
- *         SAMUEL LUCAS LIMACHI y SEBASTIAN VERGUECIO
+ *         SAMUEL LUCAS LIMACHI y SEBASTIAN VERGUECIO.
  */
 public class CocherasJava {
 
