@@ -1,13 +1,19 @@
 # Asistencia_CopyPaste :white_check_mark:
 
-# *******INTEGRANTES*********
+# ******* INTEGRANTES *********
 
-:one: FRANCO MESAS         
+:one: FRANCO MESAS 
+
 :two: GIMENEZ ERNESTO MATIAS
+
 :three: JESICA VIOLA 
-:four: LEILA BRITEZ NEIRA          
-:five: LEONARDO SOLAN                      
-:six: SAMUEL LUCAS LIMACHI    
+
+:four: LEILA BRITEZ NEIRA 
+
+:five: LEONARDO SOLAN  
+
+:six: SAMUEL LUCAS LIMACHI 
+
 :seven: SEBASTIAN VERGUECIO 
 
 
