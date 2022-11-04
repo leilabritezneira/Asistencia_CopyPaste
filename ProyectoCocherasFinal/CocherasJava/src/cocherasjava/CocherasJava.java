@@ -16,6 +16,7 @@ public class CocherasJava {
 
     /**
      * @param args the command line arguments
+     * 
      */
     public static void main(String[] args) {
 
@@ -26,7 +27,6 @@ public class CocherasJava {
     }
 
     // metodo menu principal
-
     public static void menuPrincipal(String[][] ArrayCocheras) {
 
         // limpiar pantalla
@@ -149,6 +149,7 @@ public class CocherasJava {
 
         // Iniciar variable booleana para controlar el ingreso de vehiculos
         boolean cocheraLibre = false;
+        int cocheraCarga = 0;
 
         // recorrer ArrayCocheras[0], verificar si es null
         for (int i = 0; i < cocheras; i++) {
@@ -156,23 +157,22 @@ public class CocherasJava {
                 // si es null, mostrar mensaje de cochera libre
                 System.out.println("Cochera libre: " + i);
                 cocheraLibre = true;
-                int cocheraCarga = i;
+                cocheraCarga = i;
             }
         }
 
         // si cocherasLibre es true, mostrar mensaje de cochera libre
-
         if (cocheraLibre == true) {
-            System.out.println("Ingrese el número de cochera a ocupar: ");
+
+            // ingresar datos en el array de cocheras disponibles
             try (Scanner scanner = new Scanner(System.in)) {
-                int cocheraCarga = scanner.nextInt();
                 System.out.println("Ingrese el tipo de vehículo: ");
                 String tipoVehiculo = scanner.next();
                 System.out.println("Ingrese la patente: ");
                 String patente = scanner.next();
-                System.out.println("Ingrese la marca: ");
+                System.out.println("Ingrese la Fecha: ");
                 String fecha = scanner.next();
-                System.out.println("Ingrese el modelo: ");
+                System.out.println("Ingrese la Hora: ");
                 String hora = scanner.next();
 
                 // cargar datos en el array
@@ -183,11 +183,18 @@ public class CocherasJava {
 
                 // mostrar mensaje de vehiculo cargado
                 System.out.println("Vehículo cargado correctamente");
+
                 // pausar la ejecucion del programa
                 System.out.println("Presione enter para continuar");
                 scanner.nextLine();
+                scanner.nextLine();
+
+                // volver al menu principal
             }
-        } else {
+
+        } else
+
+        {
             System.out.println("No hay cocheras disponibles");
             // pausar la ejecucion del programa
             System.out.println("Presione enter para continuar");
