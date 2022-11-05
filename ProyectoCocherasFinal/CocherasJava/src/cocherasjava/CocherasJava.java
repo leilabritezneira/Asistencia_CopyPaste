@@ -206,7 +206,7 @@ public class CocherasJava {
 
     }
 
-    // Metodo para verificare las cocheras disponibles
+    // Metodo para verificare las cocheras disponibles.
     public static int cocherasDisponibles(int cocheras) {
 
         return cocheras + 10;
