@@ -109,19 +109,20 @@ public class CocherasJava {
 
             // dependiendo de la opcion elegida, ejecutar el codigo correspondiente
             switch (opcion) {
-                case 1 -> ingresoVehiculo(cocheras, ArrayCocheras);
-                case 2 -> menuEnglish();
-                case 3 -> mostrarCocherasDisponibles(cocheras, ArrayCocheras);
-                case 4 -> {
+                case 1:
+                    ingresoVehiculo(cocheras, ArrayCocheras);
+                case 2:
+                    menuEnglish();
+                case 3:
+                    mostrarCocherasDisponibles(cocheras, ArrayCocheras);
+                case 4:
                     System.out.println("Gracias por utilizar el sistema");
                     break;
-                }
 
-                default -> {
+                default:
                     System.out.println("Opción inválida");
                     // volver a mostrar el menu
                     menuEspañol(cocheras, ArrayCocheras);
-                }
 
             }
         }
@@ -140,7 +141,7 @@ public class CocherasJava {
         System.out.println("3. Exit");
     }
 
-    // Metodo para ingresar vehiculos
+    // Metodo para ingresar vehiculoss
 
     public static void ingresoVehiculo(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
