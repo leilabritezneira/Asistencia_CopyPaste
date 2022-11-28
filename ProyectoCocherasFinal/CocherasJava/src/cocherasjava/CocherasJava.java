@@ -4,6 +4,7 @@
  */
 package cocherasjava;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -30,8 +31,7 @@ public class CocherasJava {
     public static void menuPrincipal(String[][] ArrayCocheras) {
 
         // limpiar pantalla
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
+        limpiarPantalla();
 
         // mostrar menu de opciones
         System.out.println("Bienvenido al sistema de gestión de cocheras");
@@ -53,14 +53,14 @@ public class CocherasJava {
                     opcionValida = true;
                     switch (opcion) {
                         case 1:
-                            int cocheras = cantidadCocheras();
+                            int cocheras = cantidadCocherasEsp();
                             menuEspañol(cocheras, ArrayCocheras);
                             break;
                         case 2:
                             menuEnglish();
                             break;
                         case 3:
-                            mensajeDespedida();
+                            mensajeDespedidaEsp();
                             break;
 
                         default:
@@ -112,13 +112,13 @@ public class CocherasJava {
                     opcionValida = true;
                     switch (opcion) {
                         case 1:
-                            ingresoVehiculo(cocheras, ArrayCocheras);
+                            ingresoVehiculoEsp(cocheras, ArrayCocheras);
                         case 2:
-                            buscarVehiculo(cocheras, ArrayCocheras);
+                            buscarVehiculoEsp(cocheras, ArrayCocheras);
                         case 3:
-                            mostrarCocherasDisponibles(cocheras, ArrayCocheras);
+                            mostrarCocherasDisponiblesEsp(cocheras, ArrayCocheras);
                         case 4:
-                            mensajeDespedida();
+                            mensajeDespedidaEsp();
                             break;
 
                         default:
@@ -156,8 +156,8 @@ public class CocherasJava {
         System.out.println("3. Exit");
     }
 
-    // Metodo para ingresar vehiculoss
-    public static void ingresoVehiculo(int cocheras, String[][] ArrayCocheras) {
+    // Metodo para ingresar vehiculos en español
+    public static void ingresoVehiculoEsp(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -223,14 +223,32 @@ public class CocherasJava {
 
     }
 
-    // Metodo para verificare las cocheras disponibles.
-    public static int cocherasDisponibles(int cocheras) {
+    // Metodo para ingresar vehiculos en ingles
+    public static void ingresoVehiculoEng() {
+        // limpiar pantalla
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
 
-        return cocheras + 10;
+        System.out.println("Vehicle Data Entry: ");
+        System.out.println("------------------------------------------");
+        System.out.println("Enter the vehicle type: ");
+        System.out.println("Enter the license plate: ");
+        System.out.println("Enter the Entry Date: ");
+        System.out.println("Enter the Entry Time: ");
+        System.out.println("------------------------------------------");
+        System.out.println("Vehicle entered correctly");
+        System.out.println("------------------------------------------");
+        System.out.println("Press a key to continue");
+        Scanner scanner = new Scanner(System.in);
+        scanner.nextLine();
+        scanner.nextLine();
+
+        // volver al menu principal
+        menuEnglish();
     }
 
     // metodo Solicita cantidad de cocheras disponibles
-    public static int cantidadCocheras() {
+    public static int cantidadCocherasEsp() {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -245,7 +263,7 @@ public class CocherasJava {
     }
 
     // metodo para mostrar la cantidad de cocheras disponibles
-    public static void mostrarCocherasDisponibles(int cocheras, String[][] ArrayCocheras) {
+    public static void mostrarCocherasDisponiblesEsp(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -300,7 +318,7 @@ public class CocherasJava {
         }
     }
 
-    public static void mensajeDespedida() {
+    public static void mensajeDespedidaEsp() {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -308,11 +326,14 @@ public class CocherasJava {
         System.out.println("------------------------------------------");
         System.out.println("Gracias por utilizar el sistema");
         System.out.println("------------------------------------------");
+
+        // finalizar el programa
+        System.exit(0);
     }
 
     // metodo para buscar un vehiculo por patente
 
-    public static void buscarVehiculo(int cocheras, String[][] ArrayCocheras) {
+    public static void buscarVehiculoEsp(int cocheras, String[][] ArrayCocheras) {
         // limpiar pantalla
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -374,4 +395,32 @@ public class CocherasJava {
 
         menuEspañol(cocheras, ArrayCocheras);
     }
+
+    // metodo para limpiar la pantalla independiente del sistema operativo
+
+    public static void limpiarPantalla() {
+
+        try {
+
+            String SistemaOperativo = System.getProperty("os.name");
+            //System.out.println(SistemaOperativo);
+
+            ArrayList<String>  comando= new ArrayList<String>();
+            if (SistemaOperativo.contains("Windows")) {
+                comando.add("cmd");
+                comando.add("/c");
+                comando.add("cls");
+            } else {
+                comando.add("clear");
+            }
+
+            ProcessBuilder pb = new ProcessBuilder(comando);
+            Process iniciarProceso = pb.inheritIO().start();
+            iniciarProceso.waitFor();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
 }
